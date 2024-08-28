@@ -6,7 +6,7 @@ let doIStop = false;
 let xPos = canvas.width/2
 let yPos = canvas.height/2
 
-const radius = 20
+const radius = 100
 let velocity = 5;
 
 let direction: number[] = [0,0]

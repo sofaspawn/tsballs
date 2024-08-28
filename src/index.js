@@ -6,7 +6,7 @@ let xPos = canvas.width / 2;
 let yPos = canvas.height / 2;
 const radius = 20;
 let velocity = 5;
-let direction = [1, 2];
+let direction = [0, 0];
 function resizeCanvas() {
     if (canvas && ctx) {
         canvas.width = window.innerWidth;
@@ -16,17 +16,23 @@ function resizeCanvas() {
     yPos = canvas.height / 2;
 }
 function handleKeyPress(event) {
+    console.log(event.key);
     switch (event.key) {
         case 'q':
             doIStop = true;
-        case 'ArrowUp':
+            break;
+        case 'w':
             direction[1] = -1;
-        case 'ArrowDown':
+            break;
+        case 's':
             direction[1] = 1;
-        case 'ArrowLeft':
+            break;
+        case 'a':
             direction[0] = -1;
-        case 'ArrowRight':
+            break;
+        case 'd':
             direction[0] = 1;
+            break;
         default:
             break;
     }
@@ -42,14 +48,23 @@ function boundsCheck(xPos, yPos, radius) {
 function animate() {
     if (ctx) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = 'cyan';
+        ctx.fillStyle = 'pink';
         ctx.beginPath();
         //ctx.fillRect(0, 0, canvas.width/2, canvas.height/2)
         ctx.arc(xPos, yPos, radius, 0, 2 * Math.PI);
         ctx.fill();
     }
+    console.log(direction);
     xPos += direction[0] * velocity;
     yPos += direction[1] * velocity;
+    /*
+    if (xPos<=0 || xPos>=canvas.width){
+        xPos = canvas.width/2
+    }
+    if (yPos<=0 || yPos>=canvas.height){
+        yPos = canvas.height/2
+    }
+    */
     boundsCheck(xPos, yPos, radius);
     if (!doIStop) {
         requestAnimationFrame(animate);

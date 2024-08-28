@@ -7,4 +7,5 @@ simulating [gophrics](https://github.com/sofaspawn/gophrics) in typescript for t
 - [x] display ball
 - [x] make the ball move
 - [x] bound check the ball
-- [ ] add keyboard controls
+- [x] add keyboard controls
+- [ ] spawn some obstacles to dodge or make some kinda cool math animation

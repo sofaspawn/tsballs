@@ -6,7 +6,7 @@ let doIStop = false;
 let xPos = canvas.width/2
 let yPos = canvas.height/2
 
-const radius = 100
+const radius = 10
 let velocity = 5;
 
 let direction: number[] = [0,0]
@@ -22,22 +22,29 @@ function resizeCanvas(): void{
 }
 
 function handleKeyPress(event: KeyboardEvent): void{
-    console.log(event.key);
+    let whatkey = document.getElementById('whatkey')
+    if (whatkey){
+        whatkey.innerHTML = `key pressed: ${event.key}`
+    }
     switch (event.key){
         case 'q':
             doIStop=true
             break;
         case 'w':
-            direction[1] = -1
+            //direction[1] = -1
+            direction = [0, -1]
             break;
         case 's':
-            direction[1] = 1
+            //direction[1] = 1
+            direction = [0, 1]
             break;
         case 'a':
-            direction[0] = -1
+            //direction[0] = -1
+            direction = [-1, 0]
             break;
         case 'd':
-            direction[0] = 1
+            //direction[0] = 1
+            direction = [1, 0]
             break;
         default:
             break
